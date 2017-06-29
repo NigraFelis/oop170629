@@ -7,9 +7,11 @@ import com.hanbit.oop.service.MemberService;
 public class MemberController {
 	public static void main(String[] args) {
 		Scanner s = new Scanner(System.in);
+		MemberService memberService = new MemberService();
+		
 		while(true){
 			System.out.print("enter number\n");
-			MemberService memberService = new MemberService();
+			
 			
 			String menu = s.next();
 		
@@ -26,16 +28,17 @@ public class MemberController {
 					String id = s.next();
 					memberService.setId(id);
 					System.out.println("PassWord?");
-					String pass = s.next();
-					memberService.setPassword(pass);
+					String password = s.next();
+					memberService.setPassword(password);
 					System.out.println("SSN?");
 					String ssn = s.next();
 					memberService.setSNN(ssn);
 					System.out.println("welcome");
+					memberService.setAge();
+					memberService.setGender();
 					break;
 
 				case "2":
-					System.out.println("가입된 아이디 "+ memberService.getId());
 					System.out.println("ID?");
 					String loginId = s.next();
 					memberService.setloginId(loginId);
@@ -43,6 +46,7 @@ public class MemberController {
 					String loginPw = s.next();
 					memberService.setloginPw(loginPw);
 					memberService.setlogin();
+/*					memberService.toString();*/
 					
 					System.out.println(memberService.getlogin());
 					break;
