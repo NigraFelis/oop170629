@@ -2,8 +2,9 @@ package com.hanbit.oop.controller;
 
 import java.util.Scanner;
 
-
+import com.hanbit.oop.service.BMIService;
 import com.hanbit.oop.service.CalcService;
+import com.hanbit.oop.service.GradeService;
 import com.hanbit.oop.service.LeapYearService;
 /*import com.hanbit.oop.service.RankingService;*/
 import com.hanbit.oop.service.SecondCalcService;
@@ -18,6 +19,8 @@ public class Controller {
 		TaxCalcService s4 = new TaxCalcService();
 /*		RankingService s5 = new RankingService();*/
 		SecondCalcService s6 = new SecondCalcService();
+		GradeService g = new GradeService();
+		BMIService bmi = new BMIService();
 		
 		while(true){
 			System.out.print("insert number\n");
@@ -34,9 +37,9 @@ public class Controller {
 					System.out.print("height : ");
 					double h = s.nextDouble();
 					/*s2.excute(w, h);*/
-					String bmi = s2.calcBMI(w, h);
+/*					String bmi = s2.calcBMI(w, h);
 					System.out.println("result is " + bmi);
-					break;
+*/					break;
 				
 				case "2":
 					System.out.print("Insert year\n");
@@ -79,7 +82,6 @@ public class Controller {
 					int sec = s.nextInt();
 					int seconds[] = s6.ExSecandCalc(sec);
 					System.out.println(seconds[0] + "시" + seconds[1] + "분" + seconds[2] + "초");
-					
 					break;
 
 				case "6":
@@ -89,7 +91,41 @@ public class Controller {
 					String b = s.next();
 					String sumResult = s2.calcPlus(a, b);
 					System.out.println(sumResult);
-					
+					break;
+				case "7":
+					System.out.print("enter name");
+					String name2 = s.next();
+					g.setName(name2);
+
+					System.out.print("enter major");
+					String major = s.next();
+					g.setMajor(major);
+				
+					System.out.print("kor");
+					int kor = s.nextInt();
+					g.setKor(kor);
+					System.out.print("eng");
+					int eng = s.nextInt();
+					g.setEng(eng);
+					System.out.print("math");
+					int math = s.nextInt();
+					g.setMath(math);
+					g.setTotal();
+					g.setAvg();
+					g.setGrade();
+/*					System.out.println(g.getName()+","+g.getMajor()+","+g.getGrade());*/
+					System.out.println(g.toString());
+					break;
+				case "8":
+					System.out.println("enter weight");
+					double weight=s.nextDouble();
+					bmi.setWeight(weight);
+					System.out.println("enter height");
+					double height=s.nextDouble();
+					bmi.setHeight(height);
+					bmi.setBMI();
+					bmi.setResult();
+					System.out.println(bmi.getResult());
 					break;
 			}
 		}
